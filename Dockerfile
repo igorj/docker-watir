@@ -15,4 +15,4 @@ RUN bundle install
 
 COPY . .
 
-CMD ["./test2.rb"]
+CMD "bundle exec ruby ./test2.rb"
