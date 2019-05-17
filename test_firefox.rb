@@ -12,10 +12,11 @@ args << '--headless' if HEADLESS
 #profile['browser.download.dir'] = '/tmp/webdriver-downloads'
 #profile['browser.download.folderList'] = 2
 #profile['browser.helperApps.neverAsk.saveToDisk'] = 'application/pdf'
+#profile.assume_untrusted_certificate_issuer = false
 
-b = Watir::Browser.new :firefox, options: { args: args } #, profile: profile
+b = Watir::Browser.new :firefox, options: { args: args }, "acceptInsecureCerts" => true
 
-b.goto 'http://a.testaddressbook.com'
+b.goto 'https://a.testaddressbook.com'
 b.link(text: "Sign in").click
 b.text_field(id: 'session_email').set 'watir_example@example.com'
 b.text_field(id: 'session_password').set 'password'
